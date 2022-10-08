@@ -6,7 +6,6 @@ import configparser
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
 
-
 class PdfToImage:
 	def __init__(self):
 		self.parser = configparser.ConfigParser(allow_no_value=True)
@@ -36,14 +35,11 @@ class PdfToImage:
 											strict=self.parser["PARAMETERS"]["STRICT"])
 				print("Time taken for pdf2image conversion for the PDF {} is {} seconds".format(filename, str(time.time() - start_time)))
 				count = count+1
-
 			except Exception as error:
 				print(error)
 				pass
-
 		print("\n\nTotal time taken for all " + str(count) + " pdf2image conversions : " + str(time.time() - total_start_time) + " seconds")
-		print("Average time taken for a pdf2image conversion : " + str((time.time() - total_start_time)/count) + " seconds")
-
+		print("Average time taken per pdf2image conversion : " + str((time.time() - total_start_time)/count) + " seconds")
 
 obj = PdfToImage()
 obj.pdf_to_image_converter()
